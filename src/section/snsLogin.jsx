@@ -1,5 +1,4 @@
 import React from 'react';
-import { button } from 'react-router-dom';
 import btn_naver from 'img/btn_naver.svg';
 import btn_kakao from 'img/btn_kakao.svg';
 
