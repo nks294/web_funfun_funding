@@ -1,0 +1,12 @@
+export { default as Category } from './Category';
+export { default as Comming } from './Comming';
+export { default as Error404 } from './Error404';
+export { default as Home } from './Home';
+export { default as Main } from './Main';
+export { default as MyPage } from './MyPage';
+export { default as Popular } from './Popular';
+export { default as Project } from './Project';
+export { default as Recent } from './Recent';
+export { default as Search } from './Search';
+export { default as Story } from './Story';
+export { default as Upload } from './Upload';

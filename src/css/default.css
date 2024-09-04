@@ -1,0 +1,355 @@
+/* ─────────────────────────────────────────────────────────
+                        기본 초기화 소스
+────────────────────────────────────────────────────────── */
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+  vertical-align: baseline;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-y: scroll;
+  height: max-content;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+  outline: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+body {
+  background: var(--color-white);
+  height: max-content;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 300;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  border: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+                        공용 소스
+────────────────────────────────────────────────────────── */
+
+hr {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  clear: both;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Noto Sans KR";
+  font-weight: 400;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+.float-r {
+  float: right;
+  display: inline;
+}
+
+.float-l {
+  float: left;
+  display: inline;
+}
+
+.hashtag {
+  color: var(--color-sky);
+  font-weight: bold;
+}
+
+/* ─────────────────────────────────────────────────────────
+                    사이트 컬러 리소스
+────────────────────────────────────────────────────────── */
+
+:root {
+  --color-white: #ffffff;
+  --color-light: #f1f5f9;
+  --color-lgray: #eee;
+  --color-grayish: #dadce0;
+  --color-mgray: #afb6bd;
+  --color-dgray: #888;
+  --color-black: #121212;
+  --color-night: #001632;
+
+  --color-red: #f44336;
+  --color-blue: #1a73e8;
+
+  --color-pink: #FF9EAA;
+  --color-lightpink: #FFD0D0;
+  --color-sky: #3AA6B9;
+
+  --color-palegreen: #DEF9C4;
+  --color-emerald: #9CDBA6;
+  --color-teal: #50B498;
+  --color-darkteal: #468585;
+
+  --color-dark: #333333;
+  --color-gray-light: #dcdcdc;
+  --color-primary: #376fc2;
+  --color-primary-dark: #0056b3;
+  --color-error: #d9534f;
+
+  --color-oceandark: #4D869C;
+  --color-oceanblue: #7AB2B2;
+  --color-oceanlight: #CDE8E5;
+  --color-oceanpale: #EEF7FF;
+
+  --color-instagram: linear-gradient(to right,
+      #833ab4, #fd1d1d, #fcb045);
+
+  --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-bold: 0 5px 15px -3px rgba(0, 0, 0, 0.23),
+    0 4px 6px -2px rgba(0, 0, 0, 0.23);
+}
+
+/* ─────────────────────────────────────────────────────────
+                    404 에러 페이지
+────────────────────────────────────────────────────────── */
+
+.error-page {
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: #333;
+  padding: 20px;
+}
+
+.error-heading {
+  font-size: 96px;
+  margin: 0;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+.error-subheading {
+  font-size: 36px;
+  margin: 10px 0;
+  font-weight: 400;
+}
+
+.error-paragraph {
+  font-size: 25px;
+  color: #777;
+  font-weight: 400;
+}
+
+.error-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.error-button span {
+  color: #fff;
+  font-weight: 400;
+}
+
+.error-logo-wrap {
+  display: flex;
+  font-size: 36px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.error-logo-wrapper i {
+  font-size: 50px;
+  margin-top: 6px;
+}
+
+/* ─────────────────────────────────────────────────────────
+                    좋아요 버튼 css
+────────────────────────────────────────────────────────── */
+
+.heart-btn {
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.svg-heart {
+  width: 28px;
+  fill: gray;
+  transition: fill 0.5s, transform 0.5s;
+  pointer-events: none;
+}
+
+.heart-btn.liked .svg-heart {
+  fill: #ee3529;
+}
+
+.heart-btn.liked .heart-icon {
+  transform: scale(1.2);
+}
+
+.heart-btn.liked .heart-pop {
+  animation-direction: normal;
+}
+
+.heart-pop {
+  position: absolute;
+  width: 60%;
+  opacity: 0;
+  left: 0;
+  animation: pop 1s ease forwards reverse;
+}
+
+.heart-pop.one {
+  left: 1%;
+  transform: rotate(-10deg);
+  animation-delay: 0.45;
+}
+
+.heart-pop.two {
+  left: 15%;
+  transform: rotate(8deg);
+  animation-delay: 0.25s;
+}
+
+.heart-pop.three {
+  left: 30%;
+  transform: rotate(-5deg);
+  animation-delay: 0;
+}
+
+.heart-pop.four {
+  left: 50%;
+  transform: rotate(-8deg);
+  animation-delay: 0.3s;
+}
+
+.heart-pop.five {
+  left: 60%;
+  transform: rotate(-10deg);
+  animation-delay: 0.9s;
+}
+
+.heart-pop.six {
+  left: 70%;
+  transform: rotate(-8deg);
+  animation-delay: 0.2;
+}
+
+.heart-pop.seven {
+  left: 85%;
+  transform: rotate(6deg);
+  animation-delay: 0.35s;
+}
+
+.heart-pop.eight {
+  left: 90%;
+  transform: rotate(-4deg);
+  animation-delay: 0.5s;
+}
+
+.heart-pop.nine {
+  left: 95%;
+  transform: rotate(8deg);
+  animation-delay: 0.2s;
+}
+
+@keyframes pop {
+  0% {
+    left: calc(50% - 7px);
+    top: 10px;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    top: -20px;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────
+                        로딩 스크린
+────────────────────────────────────────────────────────── */
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  color: #333;
+}
