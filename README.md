@@ -6,5 +6,7 @@
 ## 사이트 정보
 + 사이트(브랜드)명: FUNFUN 
 + 슬로건: 펀딩을 재밌게!
-+ 프로젝트 스킬: HTML, CSS, ReactJS
++ 사용
+  + 프론트엔드: html, reactJS, css
+  + 백엔드: MariaDB, SpringBoot
 
