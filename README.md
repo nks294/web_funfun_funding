@@ -11,9 +11,9 @@
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
 
-## 🌐 사이트 목표
+## 사이트 목표
 - 즐거운 펀딩 사이트
 
-## 📌 Todo List
+## Todo
 - [ ] 게시물 업로드 기능 추가
 - [ ] OracleXE를 Mariadb로 변경
