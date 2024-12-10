@@ -30,10 +30,10 @@ const ProjectDetail = () => {
       <nav id="cate-nav">
         <div className='project-menu-wrap'>
           <ul className="project-menu">
-            <li className={`cate-title-el ${isCurrentPage(`/project/detail/${articleId}`) ? 'active' : ''}`}><Link to={`/project/detail/${data.articleId}`}>프로젝트 이야기</Link></li>
-            <li className={`cate-title-el ${isCurrentPage(`/project/detailNotice/${articleId}`) ? 'active' : ''}`}><Link to={`/project/detailNotice/${data.articleId}`}>업데이트</Link></li>
-            <li className={`cate-title-el ${isCurrentPage(`/project/storyAbout/${articleId}`) ? 'active' : ''}`}><Link to={`/project/storyAbout/${data.articleId}`}>스토리</Link></li>
-            <li className={`cate-title-el ${isCurrentPage(`/project/review/${articleId}`) ? 'active' : ''}`}><Link to={`/project/review/${data.articleId}`}>후기</Link></li>
+            <li className={`cate-title-el ${isCurrentPage(`${process.env.PUBLIC_URL}/project/detail/${articleId}`) ? 'active' : ''}`}><Link to={`/project/detail/${data.articleId}`}>프로젝트 이야기</Link></li>
+            <li className={`cate-title-el ${isCurrentPage(`${process.env.PUBLIC_URL}/project/detailNotice/${articleId}`) ? 'active' : ''}`}><Link to={`/project/detailNotice/${data.articleId}`}>업데이트</Link></li>
+            <li className={`cate-title-el ${isCurrentPage(`${process.env.PUBLIC_URL}/project/storyAbout/${articleId}`) ? 'active' : ''}`}><Link to={`/project/storyAbout/${data.articleId}`}>스토리</Link></li>
+            <li className={`cate-title-el ${isCurrentPage(`${process.env.PUBLIC_URL}/project/review/${articleId}`) ? 'active' : ''}`}><Link to={`/project/review/${data.articleId}`}>후기</Link></li>
           </ul>
         </div>
       </nav>

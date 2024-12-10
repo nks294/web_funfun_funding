@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
-/server
+/backend
 .pnp.js
 
 # testing
@@ -11,6 +11,7 @@
 
 # production
 /build
+/funfun
 
 # data
 /src/data

@@ -36,7 +36,7 @@ const CateRecommand = () => {
                     const itemDiv = document.createElement("div");
                     itemDiv.classList.add('catereco-cate-wrap');
                     itemDiv.innerHTML = `
-                        <a href="/project/detail/${item.projectId}" class="catereco-cate-thumb-wrap"}>
+                        <a href="${process.env.PUBLIC_URL}/project/detail/${item.projectId}" class="catereco-cate-thumb-wrap"}>
                             <div class="catereco-cate-thumb"> <!-- 이미지 썸네일 영역 -->
                                 <img src="https://picsum.photos/300/300?random=${item.projectId}">
                             </div>
