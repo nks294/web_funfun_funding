@@ -10,7 +10,7 @@ export function call(api, method, request) {
   };
   if (request) {
     options.body = JSON.stringify(request);
-    // console.log("요청내용: " + options.body);
+    console.log("요청내용: " + options.body);
   }
   return fetch(options.url, options) //실행 결과 Promise객체 반환
     .then((response) =>
