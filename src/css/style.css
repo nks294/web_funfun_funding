@@ -1093,7 +1093,7 @@ section {
 
 #section1 {
   display: grid;
-  grid-template-columns: 850px auto;
+  grid-template-columns: 945px auto;
 }
 
 #section1 .section-wrap {
@@ -1211,8 +1211,7 @@ aside {
   width: 100%;
   height: 100%;
   border-left: 1px solid #eee;
-  padding-left: 30px;
-  padding-right: 10px;
+  padding: 10px;
 }
 
 .aside-title {
@@ -1222,8 +1221,7 @@ aside {
   font-weight: bold;
   margin: 35px 10px;
   padding: 12px 0;
-  border-radius: 50px;
-  border-bottom: 3px solid #ddd;
+  border-bottom: 2px solid #bbb;
 }
 
 .aside-title i {
@@ -1232,6 +1230,7 @@ aside {
 
 .rank-title-wrap {
   display: flex;
+  width: 85%;
 }
 
 .rank-thumb {
@@ -1244,7 +1243,7 @@ aside ul {
   margin: 20px 20px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 
 
@@ -1258,7 +1257,7 @@ aside ul>li {
 aside ul>li .rank-items {
   position: relative;
   width: 100%;
-  height: 130px;
+  height: 55px;
   transform-style: preserve-3d;
   transition: transform 0.3s ease-out;
 }
@@ -1284,6 +1283,7 @@ aside li:hover .rank-items {
   z-index: 1;
   overflow: hidden;
   border: 2px solid #ddd;
+  gap: 15px;
 }
 
 .rank-items__back {
@@ -1296,11 +1296,11 @@ aside li:hover .rank-items {
 
 .rank-number {
   margin-left: 15px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .rank-title {
-  width: 82%;
+  width: 100%;
   margin-right: 10px;
   text-align: right;
   font-size: 16px;

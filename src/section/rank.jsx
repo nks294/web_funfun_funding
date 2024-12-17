@@ -44,15 +44,12 @@ const Aside = () => {
             <ul className="rank-wrap">
                 {data.map((item) => (
                     <li key={item.projectId}>
-                        <Link to={`${process.env.PUBLIC_URL}/project/detail/${item.projectId}`}>
+                        <Link to={`project/detail/${item.projectId}`}>
                             <div className="rank-items">
                                 <div className="rank-items__front">
                                     <p className="rank-number">{item.projectRank}</p>
                                     <div className="rank-title-wrap">
                                         <p className="rank-title">{item.articleTitle}</p>
-                                        <div className="rank-thumb">
-                                            <img src={`https://picsum.photos/400/400?random=${item.projectId}`} alt="섬네일 이미지" />
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="rank-items__back">
