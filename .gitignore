@@ -5,12 +5,11 @@
 
 # directory
 /coverage
-/build
 /funfun
+build
 
 # backend
-/backend
-!backend/build/libs/funfun_back-0.0.1-SNAPSHOT.jar
+backend/src/main/resources/application.properties
 
 # misc
 .DS_Store
