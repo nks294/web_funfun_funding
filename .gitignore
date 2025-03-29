@@ -1,7 +1,6 @@
 # directory
 coverage/
 build/
-backend/
 .gradle/
 
 # Temp

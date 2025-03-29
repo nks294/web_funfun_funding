@@ -32,6 +32,37 @@
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/)
 
+### Clone project (https)
+```powershell
+git clone https://github.com/nks294/funfun_funding.git
+```
+
+### Go to project (frontend)
+```powershell
+cd funfun_funding
+```
+### Install Package (frontend)
+```powershell
+npm install
+```
+### Start frontend
+```powershell
+npm install
+```
+
+### Go to project (backend)
+```powershell
+cd funfun_funding/backend
+```
+### Build project (backend)
+```powershell
+./gradlew clean build
+```
+### Start backend
+```powershell
+java -jar build/libs/backend.jar
+```
+
 ## Todo
 - [ ] 게시물 업로드 기능 추가
 
