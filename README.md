@@ -47,9 +47,9 @@ npm install
 ```
 ### Start frontend
 ```powershell
-npm install
+npm start
 ```
-
+<br>
 ### Go to project (backend)
 ```powershell
 cd funfun_funding/backend
