@@ -37,6 +37,8 @@
 git clone https://github.com/nks294/funfun_funding.git
 ```
 
+<br>
+
 ### Go to project (frontend)
 ```powershell
 cd funfun_funding
