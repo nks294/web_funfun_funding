@@ -1,11 +1,7 @@
-# dependencies
-/.pnp
-.pnp.js
-
 # directory
-/coverage
-/funfun
-build
+coverage/
+build/
+backend/
 .gradle/
 
 # Temp
