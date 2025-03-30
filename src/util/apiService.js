@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "./appConfig";
+const API_BASE_URL = "http://localhost:8999";
 
 export function call(api, method, request) {
   let options = {
