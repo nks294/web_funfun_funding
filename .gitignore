@@ -2,6 +2,7 @@
 coverage/
 build/
 .gradle/
+bin/
 
 # Temp
 .DS_Store
