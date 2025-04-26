@@ -14,15 +14,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		//모든 경로에 대해
-		registry.addMapping("/**")
-				//Origin이 http:localhost:3000에 대해
-				.allowedOriginPatterns("*")
-				// .allowedOriginPatterns("http://localhost:3000")
-				//GET,POST,PUT,DELETE,PATCH,OPTIONS 메소드를 허용한다.
-				.allowedMethods("GET","POST","PUT","DELETE","PATCH","OPTIONS")
-				.allowedHeaders("*")
-				.allowCredentials(true)
-				.maxAge(MAX_AGE_SECS);
+    registry.addMapping("/**")
+            .allowedOriginPatterns("http://localhost:9091", "https://preview.294.ink")
+            .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+            .allowedHeaders("*")
+            .allowCredentials(true)
+            .maxAge(MAX_AGE_SECS);
 	}
 
 }
