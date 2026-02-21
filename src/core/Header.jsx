@@ -75,7 +75,7 @@ const Header = () => {
                         <div className="top-nav-menu-login">
                             <LoginForm />
                         </div>
-                        {(isLoggedIn && usrAuthLevel >= 1) ? <Link to="/project/upload" className="top-nav-btn-project">프로젝트 만들기</Link> : ''}
+                        {(isLoggedIn) ? <Link to="/project/upload" className="top-nav-btn-project">프로젝트 만들기</Link> : ''}
                     </div>
                 </div>
                 {isCateNavNeed && (

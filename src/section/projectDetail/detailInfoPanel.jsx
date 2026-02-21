@@ -88,24 +88,50 @@ const DetailInfoPanel = (props) => {
 
     return (
         <>
+            <div className="author-profile-card">
+                <img
+                    src={data.authorProfilePic || `https://picsum.photos/100/100?random=${data.projectAuthor}`}
+                    alt="창작자 프로필"
+                    className="author-profile-pic"
+                />
+                <div className="author-info">
+                    <p className="author-label">창작자 정보</p>
+                    <p className="author-name">{data.projectAuthor}</p>
+                </div>
+            </div>
+
             <div className='detail-info-panel-bar'>
                 <h1>{data.projectName}</h1>
                 <p>{data.articleTitle}</p>
+
                 <div className="detail-funding-info">
-                    <p><strong>{data.projectGoal === 0 ? 0 : Math.floor((data.projectCurrent / data.projectGoal) * 100)}%</strong> 달성</p>
-                    <p><strong>{parseInt(data.projectCurrent).toLocaleString()}</strong> 원 달성</p>
-                    <p>{data.projectPeople} 명 참여</p>
-                </div>
-                <div className="detail-bottom-section">
-                    <div className="detail-like-container">
-                        {likeButton()}
-                        <p className="like-count">{(!likeError) ? likes : 'fun'}</p>
+                    <div className="funding-item">
+                        <span>목표 금액</span>
+                        <p><strong>{parseInt(data.projectGoal).toLocaleString()}</strong> 원</p>
                     </div>
-                    <FaShareAlt className="detail-share-icon" />
-                    <button className="detail-funding-button" onClick={handleFunding}>펀딩하기</button>
+                    <div className="funding-item">
+                        <span>참여 인원</span>
+                        <p><strong>{data.projectPeople}</strong> 명</p>
+                    </div>
+                    <div className="funding-item">
+                        <span>현재까지 모인 금액</span>
+                        <p><strong>{parseInt(data.projectCurrent).toLocaleString()}</strong> 원 <strong className="percent">{data.projectGoal === 0 ? 0 : Math.floor((data.projectCurrent / data.projectGoal) * 100)}%</strong></p>
+                    </div>
                 </div>
 
+                <div className="detail-bottom-section">
+                    <div className="detail-button-container">
+                        <div className="detail-like-container">
+                            {likeButton()}
+                            <p className="like-count">{(!likeError) ? likes : 'fun'}</p>
+                        </div>
+                        <FaShareAlt className="detail-share-icon" />
+                    </div>
+
+                    <button className="detail-funding-button" onClick={handleFunding}>펀딩하기</button>
+                </div>
             </div>
+
             <div className="detail-reward-selection">
                 <h1>리워드 선택</h1>
                 <p className="detail-duration">진행기간: 7.29 - 8.29</p>
@@ -129,12 +155,16 @@ const DetailInfoPanel = (props) => {
                         </div>
                     </div>
                 ))}
+
                 <div className="detail-bottom-section">
-                    <div className="like-container">
-                        {likeButton()}
-                        <p className="like-count">{(!likeError) ? likes : 'fun'}</p>
+                    <div className="detail-button-container">
+                        <div className="detail-like-container">
+                            {likeButton()}
+                            <p className="like-count">{(!likeError) ? likes : 'fun'}</p>
+                        </div>
+                        <FaShareAlt className="detail-share-icon" />
                     </div>
-                    <span><FaShareAlt className="detail-share-icon" /></span>
+
                     <button className="detail-funding-button" onClick={handleFunding}>펀딩하기</button>
                 </div>
             </div>

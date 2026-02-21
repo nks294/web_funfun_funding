@@ -124,3 +124,33 @@ export function articleCancleLike(id) {
     const url = `/Article/articleCancleLike?id=${id}`;
     return call(url, "PUT");
 }
+
+/* ──────────────────────────────────────
+            스토리 관련 메서드
+───────────────────────────────────────── */
+
+// 스토리 전체 목록 조회 
+export function getStoryList() {
+    return call("/Story/getStoryList", "GET");
+}
+
+// 특정 판매자의 스토리 목록 조회
+export function getStoryListBySeller(sellerName) {
+    return call(`/Story/getStoryList/${encodeURIComponent(sellerName)}`, "GET");
+}
+
+// 특정 스토리 상세 조회
+export function getStory(id) {
+    return call(`/Story/${id}`, "GET");
+}
+
+// 스토리 등록
+export function insertStory(storyDTO, projectIds = []) {
+    let url = "/Story/insert";
+
+    if (projectIds.length > 0) {
+        url += `?projectIds=${projectIds.join(',')}`;
+    }
+
+    return call(url, "POST", storyDTO);
+}

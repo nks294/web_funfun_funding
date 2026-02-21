@@ -21,6 +21,8 @@ const ProjectDetail = () => {
     }, []);
 
     if (error) return <div>데이터를 불러오는중 문제가 발생했습니다.</div>
+    // 데이터가 아직 로딩 중일 때 빈 화면이나 로딩바를 보여주어 하위 컴포넌트의 오류 방지
+    if (!data) return <div>로딩 중...</div>
 
     return (
         <>
@@ -41,7 +43,7 @@ const ProjectDetail = () => {
                 <div className='detail-left-area'>
                     {isCurrentPage(`/project/detail/${articleId}`) && <Article data={data} />}
                     {isCurrentPage(`/project/detailNotice/${articleId}`) && <Notice data={data} />}
-                    {isCurrentPage(`/project/storyAbout/${articleId}`) && <Story data={data} />}
+                    {isCurrentPage(`/project/storyAbout/${articleId}`) && <Story projectDetail={data} />}
                     {isCurrentPage(`/project/review/${articleId}`) && <Review data={data} />}
                 </div>
                 <div className="detail-right-area">
@@ -51,6 +53,5 @@ const ProjectDetail = () => {
         </>
     );
 }
-
 
 export default ProjectDetail;

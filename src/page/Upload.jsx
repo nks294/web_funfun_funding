@@ -38,13 +38,15 @@ const Upload = () => {
 
     // 모달 닫기 및 폼 데이터 제출 처리
     const closeModal = () => {
-        console.log('Form submitted with data:', {
-            projectName,
-            description,
-            compensation,
-            images,
-            introImages
-        });
+        // console.log('Form submitted with data:', {
+        //     projectName,
+        //     description,
+        //     compensation,
+        //     images,
+        //     introImages
+        // });
+
+        alert("성공적으로 등록 신청 되었습니다!\n(테스트라서 실제로 등록되진 않지만요!)")
         setIsModalOpen(false);
         // 상태 초기화
         setProjectName('');
@@ -105,21 +107,22 @@ const Upload = () => {
     return (
         <>
             <Helmet>
-                <title>FUNFUN - 새로운 프로젝트 등록</title>
+                <title>FUNFUN - 새로운 프로젝트 등록 (미완성)</title>
             </Helmet>
             <section id="upload">
                 <div id="box">
-                    <h4 style={{ color: 'black', fontSize: '37px', fontWeight: 'bold' }}>최고의 프로젝트를 보여주세요!</h4><br />
+                    <h3 className="main-title">프로젝트 등록 신청</h3>
+                    <h5 className="main-subtitle">최고의 프로젝트를 보여주세요!</h5>
 
-                    <h3 style={{ color: 'orange', fontSize: '23px', marginBottom: '10px' }}>카테고리 선택</h3>
-                    <div style={{ display: 'flex' }}>
-                        <select value={mainCategory} onChange={handleMainCategoryChange} style={{ width: '25%', padding: '10px', fontSize: '16px', borderRadius: '12px' }}>
+                    <h3 className="sub-title">카테고리 선택</h3>
+                    <div className="category-container">
+                        <select className="category-select" value={mainCategory} onChange={handleMainCategoryChange}>
                             <option value="">대분류 선택</option>
                             {Object.keys(categoryOptions).map(category => (
                                 <option key={category} value={category}>{category}</option>
                             ))}
                         </select>
-                        <select value={subCategory} onChange={handleSubCategoryChange} style={{ width: '25%', padding: '10px', fontSize: '16px', borderRadius: '12px' }}
+                        <select className="category-select" value={subCategory} onChange={handleSubCategoryChange}
                             disabled={!mainCategory}>
                             <option value="">소분류 선택</option>
                             {mainCategory && categoryOptions[mainCategory].map(sub => (
@@ -127,114 +130,74 @@ const Upload = () => {
                             ))}
                         </select>
                     </div>
-                    <br /><br />
-                    <h3 style={{ color: 'orange', fontSize: '23px', marginBottom: '10px' }}>프로젝트명 등록</h3>
+
+                    <h3 className="sub-title">프로젝트명 등록</h3>
                     <textarea
+                        className="input-field name-input"
                         value={projectName}
                         onChange={handleProjectNameChange}
                         rows="1"
-                        cols="3"
                         placeholder="프로젝트명을 등록하세요"
-                        style={{
-                            width: '100%',
-                            padding: '10px',
-                            border: '1px solid #ccc',
-                            borderRadius: '50px',
-                            fontSize: '16px',
-                            boxSizing: 'border-box',
-                            overflowY: 'auto'
-                        }}
-                    /><br /><br />
-
-                    <h3 style={{ color: 'orange', fontSize: '23px', marginBottom: '10px' }}>대표 사진 등록</h3>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        multiple // 다중 파일 선택 허용
-                        onChange={(e) => handleImageChange(e, setImages)}
                     />
-                    {images.length > 0 && (
-                        <div>
-                            {images.map((image, index) => (
-                                <img key={index} src={image} alt={`Preview ${index}`} style={{ width: '200px', height: 'auto', marginRight: '10px' }} />
-                            ))}
-                        </div>
-                    )}
-                    <br /><br />
 
-                    <h3 style={{ color: 'orange', fontSize: '23px', marginBottom: '10px' }}>프로젝트 소개(2000자 이내)</h3>
+                    <h3 className="sub-title">대표 사진 등록</h3>
+                    <div className="file-input-wrapper">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            multiple // 다중 파일 선택 허용
+                            onChange={(e) => handleImageChange(e, setImages)}
+                        />
+                        {images.length > 0 && (
+                            <div className="preview-list">
+                                {images.map((image, index) => (
+                                    <img key={index} src={image} alt={`Preview ${index}`} className="preview-img" />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    <h3 className="sub-title">프로젝트 소개(2000자 이내)</h3>
                     <textarea
+                        className="input-field"
                         value={description}
                         onChange={handleDescriptionChange}
                         rows="10"
-                        cols="50"
                         placeholder="프로젝트를 소개할 내용을 입력하세요"
-                        style={{
-                            width: '100%',
-                            padding: '10px',
-                            border: '1px solid #ccc',
-                            borderRadius: '12px',
-                            fontSize: '16px',
-                            boxSizing: 'border-box',
-                            overflowY: 'auto'
-                        }}
-                    /><br /><br />
-
-                    <h3 style={{ color: 'orange', fontSize: '23px', marginBottom: '10px' }}>소개 사진 등록</h3>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => handleImageChange(e, setIntroImages)}
                     />
-                    {introImages.length > 0 && (
-                        <div>
-                            {introImages.map((image, index) => (
-                                <img key={index} src={image} alt={`Preview ${index}`} style={{ width: '200px', height: 'auto', marginRight: '10px' }} />
-                            ))}
-                        </div>
-                    )}
-                    <br /><br />
 
-                    <h3 style={{ color: 'orange', fontSize: '23px', marginBottom: '10px' }}>보상 설계</h3>
+                    <h3 className="sub-title">소개 사진 등록</h3>
+                    <div className="file-input-wrapper">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleImageChange(e, setIntroImages)}
+                        />
+                        {introImages.length > 0 && (
+                            <div className="preview-list">
+                                {introImages.map((image, index) => (
+                                    <img key={index} src={image} alt={`Preview ${index}`} className="preview-img" />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    <h3 className="sub-title">보상 설계</h3>
                     <textarea
+                        className="input-field"
                         value={compensation}
                         onChange={handleCompensationChange}
                         rows="5"
-                        cols="20"
                         placeholder="투자자들에 대한 보상 설계를 입력하세요"
-                        style={{
-                            width: '100%',
-                            padding: '10px',
-                            border: '1px solid #ccc',
-                            borderRadius: '12px',
-                            fontSize: '16px',
-                            boxSizing: 'border-box',
-                            overflowY: 'auto'
-                        }}
                     />
 
-                    <br />
-
-                    <br /><br /><button
-                        onClick={openModal}
-                        style={{
-                            color: 'black',
-                            fontSize: '18px',
-                            width: '120px',
-                            height: '50px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            border: '2px solid black',
-                            backgroundColor: 'white',
-                            cursor: 'pointer'
-                        }}
-                    >
+                    <button onClick={openModal} className="open-modal-btn">
                         최종 등록하기
                     </button>
+
                     <Modal
                         isOpen={isModalOpen}
-                        onRequestClose={closeModal}
+                        onRequestClose={() => setIsModalOpen(false)}
                         contentLabel="Example Modal"
                         className="modal-content"
                         overlayClassName="modal-overlay"
@@ -243,23 +206,23 @@ const Upload = () => {
                         <p>
                             등록 후 심사가 진행되며, 심사 완료 후에는 일부 내용 수정에 제한이 있을 수 있습니다.<br />
                             등록을 원하신다면 밑 입력란에 {' '}
-                            <span style={{ color: 'blue' }}>
+                            <span style={{ color: 'var(--color-blue)', fontWeight: 'bold' }}>
                                 내용을 이해했으며 등록하겠습니다
                             </span>{' '} 를 입력해주세요.
                         </p>
                         <form onSubmit={handleSubmit}>
                             <input
+                                className="confirm-input"
                                 type="text"
                                 value={formData}
                                 onChange={handleFormDataChange}
                                 placeholder="내용을 이해했으며 등록하겠습니다"
-                                style={{ width: '100%' }}
                             />
                             <div className="upload-btn-wrap">
-                                {errorMessage && <p className="error-message">{errorMessage}</p>}<br />
+                                {errorMessage && <p className="error-message">{errorMessage}</p>}
                                 <button type="submit" disabled={isButtonDisabled}>
                                     등록하기
-                                </button><br />
+                                </button>
                                 <button type="button" onClick={() => setIsModalOpen(false)}>
                                     취소
                                 </button>

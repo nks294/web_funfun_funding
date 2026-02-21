@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.first.funfun.mapper.StoryMapper">
+
+    <resultMap id="StoryResultMap" type="com.first.funfun.dto.StoryDTO">
+        <id property="storyId" column="story_id" />
+        <result property="sellerName" column="seller_name" />
+        <result property="userEmail" column="user_email" />
+        <result property="profilePic" column="profile_pic" />
+        <result property="postImage" column="post_image" />
+        <result property="postDescription" column="post_description" />
+        <result property="postUpload" column="post_upload" />
+        
+        <result property="taggedItemCount" column="tagged_item_count" />
+
+        <collection property="taggedProjects" ofType="com.first.funfun.dto.ProjectDTO">
+            <id property="projectId" column="project_id" />
+            <result property="projectName" column="project_name" />
+            <result property="projectCurrent" column="project_current" />
+            </collection>
+    </resultMap>
+
+    <select id="getStoryList" resultMap="StoryResultMap">
+        SELECT 
+            s.story_id,
+            m.user_nickname as seller_name,
+            s.user_email,
+            s.profile_pic,
+            s.post_image,
+            s.post_description,
+            s.post_upload,
+            p.project_id,
+            p.project_name,
+            p.project_current,
+            (SELECT COUNT(*) FROM story_tags st2 WHERE st2.story_id = s.story_id) as tagged_item_count
+        FROM story s
+        LEFT JOIN member m ON s.user_email = m.user_email
+        LEFT JOIN story_tags st ON s.story_id = st.story_id
+        LEFT JOIN projects p ON st.project_id = p.project_id
+        ORDER BY s.post_upload DESC
+    </select>
+
+    <select id="getStoryListBySeller" parameterType="string" resultMap="StoryResultMap">
+        SELECT 
+            s.story_id,
+            m.user_nickname as seller_name,
+            s.user_email,
+            s.profile_pic,
+            s.post_image,
+            s.post_description,
+            s.post_upload,
+            p.project_id,
+            p.project_name,
+            p.project_current,
+            (SELECT COUNT(*) FROM story_tags st2 WHERE st2.story_id = s.story_id) as tagged_item_count
+        FROM story s
+        LEFT JOIN member m ON s.user_email = m.user_email
+        LEFT JOIN story_tags st ON s.story_id = st.story_id
+        LEFT JOIN projects p ON st.project_id = p.project_id
+        WHERE s.user_email = #{sellerEmail}
+        ORDER BY s.post_upload DESC
+    </select>
+
+    <select id="getStory" parameterType="_int" resultMap="StoryResultMap">
+        SELECT 
+            s.*,
+            m.user_nickname as seller_name,
+            p.project_id,
+            p.project_name,
+            p.project_current
+        FROM story s
+        LEFT JOIN member m ON s.user_email = m.user_email
+        LEFT JOIN story_tags st ON s.story_id = st.story_id
+        LEFT JOIN projects p ON st.project_id = p.project_id
+        WHERE s.story_id = #{storyId}
+    </select>
+
+    <insert id="insertStory" parameterType="com.first.funfun.dto.StoryDTO" useGeneratedKeys="true" keyProperty="storyId">
+        INSERT INTO story (user_email, profile_pic, post_image, post_description, post_upload)
+        VALUES (#{userEmail}, #{profilePic}, #{postImage}, #{postDescription}, NOW())
+    </insert>
+
+    <insert id="insertStoryTag" parameterType="map">
+        INSERT INTO story_tags (story_id, project_id)
+        VALUES (#{storyId}, #{projectId})
+    </insert>
+
+</mapper>

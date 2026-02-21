@@ -78,7 +78,17 @@ public class UserController {
 
     // 회원목록 가져오기
     @GetMapping("/getUserList")
-    public List<UserDTO> getUserList() {
+    public List<UserDTO> getUserList(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("loginUser") == null) {
+            return null;
+        }
+
+        UserDTO loginUser = (UserDTO) session.getAttribute("loginUser");
+        if (loginUser.getUserAuthLevel() != 3) {
+            return null;
+        }
+
         List<UserDTO> userList = null;// 회원 조회 내용이 없을 때 결과값
 
         userList = userService.getUserList();
@@ -94,8 +104,20 @@ public class UserController {
 
     // 회원정보 수정하기
     @PutMapping("/updateUser")
-    public Map<String, String> updateUser(@RequestBody UserDTO dto) {
+    public Map<String, String> updateUser(@RequestBody UserDTO dto, HttpServletRequest request) {
         Map<String, String> result = new HashMap<>();
+
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("loginUser") == null) {
+            result.put("result", "FAIL");
+            return result;
+        }
+
+        UserDTO loginUser = (UserDTO) session.getAttribute("loginUser");
+        if (!loginUser.getUserEmail().equals(dto.getUserEmail()) && loginUser.getUserAuthLevel() != 3) {
+            result.put("result", "FAIL");
+            return result;
+        }
 
         if (userService.updateUser(dto) == 1) {
             result.put("result", "OK");
@@ -108,8 +130,23 @@ public class UserController {
 
     // 회원정보 탈퇴 처리하기
     @DeleteMapping("/{uIdx}/deleteUser")
-    public Map<String, String> deleteUser(@PathVariable String uIdx) {
+    public Map<String, String> deleteUser(@PathVariable String uIdx, HttpServletRequest request) {
         Map<String, String> result = new HashMap<>();
+
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("loginUser") == null) {
+            result.put("result", "FAIL");
+            return result;
+        }
+
+        UserDTO loginUser = (UserDTO) session.getAttribute("loginUser");
+        UserDTO targetUser = userService.getUser(Integer.parseInt(uIdx));
+
+        if (targetUser == null
+                || (!loginUser.getUserEmail().equals(targetUser.getUserEmail()) && loginUser.getUserAuthLevel() != 3)) {
+            result.put("result", "FAIL");
+            return result;
+        }
 
         if (userService.deleteUser(Integer.parseInt(uIdx)) == 1) {
             result.put("result", "OK");// 회원탈퇴 요청 처리 성공

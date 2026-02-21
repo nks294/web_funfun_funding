@@ -11,7 +11,8 @@ const InfinityScroll = ({
     cateMain,
     cateSub,
     searchTerm,
-    sortOptions = []
+    sortOptions = [],
+    mode = 'project'
 }) => {
     const wrapRef = useRef(null);
     const observerRef = useRef(null);
@@ -68,7 +69,10 @@ const InfinityScroll = ({
             },
             { threshold: 0 }
         );
-        observer.observe(observerEl);
+
+        if (observerEl) {
+            observer.observe(observerEl);
+        }
 
         // 언마운트되면 클린업 함수로 옵저버 삭제
         return () => {
@@ -101,7 +105,6 @@ const InfinityScroll = ({
             {sortOptions.length > 0 ? (
                 <>
                     <div className="section-title">
-                        {/* - {(sortBy === option.value) && option.label} */}
                         <p>{title} - {sortBy ? `${sortOptions.find(option => option.value === sortBy)?.label || '기본'}` : ''}</p>
                     </div>
                     <div className="search-sort">
@@ -118,9 +121,13 @@ const InfinityScroll = ({
                     </div>
                 </>
             ) : (
-                <div className="section-title">
-                    <p>{title}</p>
-                </div>
+                <>
+                    {(mode === 'project' || mode === 'list') && (
+                        <div className="section-title">
+                            <p>{title}</p>
+                        </div>
+                    )}
+                </>
             )}
             {/* 오류가 발생했을 경우, 오류 문구 출력 */}
             {error ? (
@@ -129,8 +136,10 @@ const InfinityScroll = ({
                 </div>
             ) : (
                 <>
+                    {(mode === 'project' || mode === 'list') && (
+                        <div className="list-page" ref={wrapRef}></div>
+                    )}
                     {/* 정상적으로 로딩되면, 데이터 렌더링 메서드 호출 */}
-                    <div className="list-page" ref={wrapRef}></div>
                     {renderData(wrapRef.current, data, sortBy)}
                     {isLoading && <div className='loading-screen'><SyncLoader /></div>}
                 </>
@@ -150,7 +159,7 @@ const InfinityScroll = ({
     );
 }
 
-InfinityScroll.prototypes = {
+InfinityScroll.propTypes = {
     fetchData: PropTypes.func.isRequired,
     renderData: PropTypes.func.isRequired,
     initialSortBy: PropTypes.string,
@@ -162,7 +171,8 @@ InfinityScroll.prototypes = {
     sortOptions: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired
-    }))
+    })),
+    mode: PropTypes.string
 };
 
 export default InfinityScroll;

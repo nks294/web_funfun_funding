@@ -1,63 +1,67 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getStoryListBySeller } from 'util/apiService';
+import { RenderStory } from 'section/renderStory';
 
-// // 게시글 데이터 예시
-// const notices = [
-//   {
-//     id: 1,
-//     category: '공지',
-//     title: '첫 번째 공지사항 제목',
-//     date: '2024-08-27',
-//     comments: 5
-//   },
-//   {
-//     id: 2,
-//     category: '업데이트',
-//     title: '두 번째 공지사항 제목',
-//     date: '2024-08-25',
-//     comments: 2
-//   },
-//   {
-//     id: 3,
-//     category: '이벤트',
-//     title: '세 번째 공지사항 제목',
-//     date: '2024-08-20',
-//     comments: 8
-//   }
-// ];`
+const DetailInfoStory = ({ projectDetail }) => {
+    const [authorStories, setAuthorStories] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-// 개별 게시글 항목 컴포넌트
-// const NoticeItem = ({ notice }) => {
+    useEffect(() => {
+        const fetchStories = async () => {
+            try {
+                const data = await getStoryListBySeller(projectDetail.projectAuthor);
+                setAuthorStories(data);
+            } catch (error) {
+                console.error("스토리를 불러오는데 실패했습니다.", error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-//   return (
-//     <>
-//       <div className="notice-item">
-//         <div className="notice-category">{notice.category}</div>
-//         <div className="notice-title">{notice.title}</div>
-//         <div className="notice-info">
-//           <span className="notice-date">{notice.date}</span>
-//           <span className="notice-comments">{notice.comments} 댓글</span>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
+        if (projectDetail?.projectAuthor) {
+            fetchStories();
+        } else if (projectDetail) {
+            setLoading(false);
+        }
+    }, [projectDetail]);
 
-const DetailInfoStory = (props) => {
+    const formatTime = (dateString) => {
+        const now = new Date();
+        const postDate = new Date(dateString);
+        const diffInMinutes = Math.floor((now - postDate) / (1000 * 60));
+        if (diffInMinutes < 60) return `${diffInMinutes}분 전`;
+        const diffInHours = Math.floor(diffInMinutes / 60);
+        if (diffInHours < 24) return `${diffInHours}시간 전`;
+        return postDate.toLocaleDateString();
+    };
 
-    // const data = props.data;
-    // const articleId = data.articleId;
+    if (loading) return <div className="loading">소식을 불러오는 중입니다...</div>;
 
     return (
-        <>
+        <div className="detail-story-container">
             <div className="notice-list-header">
                 <div className="header-left">
-                    <h1>스토리</h1>
+                    <h1>창작자 스토리</h1>
                 </div>
             </div>
-            <div className="notice-list">
-                <h2>구현 예정</h2>
+
+            <div className="posts-container list-view">
+                {authorStories && authorStories.length > 0 ? (
+                    authorStories.map((story) => (
+                        <RenderStory
+                            key={story.storyId}
+                            {...story}
+                            postTime={formatTime(story.postUpload)}
+                            viewType="list"
+                        />
+                    ))
+                ) : (
+                    <div className="no-data">
+                        <p>아직 등록된 스토리가 없습니다.</p>
+                    </div>
+                )}
             </div>
-        </>
+        </div>
     );
 }
 

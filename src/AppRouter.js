@@ -1,5 +1,5 @@
-import "css/style.css";
-import "css/default.css";
+import "style/style.scss";
+import "style/default.scss";
 
 import React from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
