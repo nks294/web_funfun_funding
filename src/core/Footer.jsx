@@ -23,13 +23,13 @@ const Footer = () => {
                             <li><Link to="#">이용안내</Link></li>
                             <li><Link to="#">가이드</Link></li>
                             <li><Link to="#">창작자 가이드</Link></li>
-                            <li><Link to="/fee-information">수수료 안내</Link></li>
+                            <li><Link to="/premium">요금제 안내</Link></li>
                         </ul>
                         <ul>
                             <li><Link to="#">정책</Link></li>
                             <li><Link to="#">개인정보처리방침</Link></li>
-                            <li><Link to="/examination-guideline">심사 기준</Link></li>
-                            <li><Link to="/utilization-policy">이용 정책</Link></li>
+                            <li><Link to="/guideline">심사 기준</Link></li>
+                            <li><Link to="/policy">이용 정책</Link></li>
                         </ul>
                     </div>
                     <div className="help-center ">

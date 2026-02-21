@@ -10,3 +10,6 @@ export { default as Recent } from './Recent';
 export { default as Search } from './Search';
 export { default as Story } from './Story';
 export { default as Upload } from './Upload';
+export { default as PremiumInformation } from './PremiumInfo';
+export { default as GuideLine } from './GuideLine';
+export { default as Policy } from './Policy';

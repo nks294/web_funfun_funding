@@ -8,12 +8,10 @@ import { Header, Footer } from "core";
 import {
     Category, Comming, Error404, Home,
     Popular, Project, Recent,
-    Story, Search, Upload, MyPage
+    Story, Search, Upload, MyPage, PremiumInformation,
+    Policy, GuideLine
 } from "page";
 import NoticeBoard from "section/noticeBoard";
-import FeeInformation from "section/feeInformation";
-import ExaminationGuideline from "section/examinationGuideline";
-import UtilizationPolicy from "section/utilizationPolicy";
 import ScrollToTop from "util/scrollToTop"
 
 const AppRouter = () => {
@@ -47,10 +45,10 @@ const AppRouter = () => {
                 <Route path="/story" element={<Story />} />
 
                 {/* footer 세부 */}
+                <Route path="/premium" element={<PremiumInformation />} />
+                <Route path="/guideline" element={<GuideLine />} />
+                <Route path="/policy" element={<Policy />} />
                 <Route path="/notice-Board" element={<NoticeBoard />} />
-                <Route path="/fee-information" element={<FeeInformation />} />
-                <Route path="/examination-guideline" element={<ExaminationGuideline />} />
-                <Route path="/utilization-policy" element={<UtilizationPolicy />} />
 
                 {/* 404 에러 페이지 */}
                 <Route path="/404" element={<Error404 />} />
