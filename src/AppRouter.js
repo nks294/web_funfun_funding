@@ -9,9 +9,8 @@ import {
     Category, Comming, Error404, Home,
     Popular, Project, Recent,
     Story, Search, Upload, MyPage, PremiumInformation,
-    Policy, GuideLine
+    Policy, GuideLine, Notice
 } from "page";
-import NoticeBoard from "section/noticeBoard";
 import ScrollToTop from "util/scrollToTop"
 
 const AppRouter = () => {
@@ -44,11 +43,11 @@ const AppRouter = () => {
                 {/* 스토리 페이지 */}
                 <Route path="/story" element={<Story />} />
 
-                {/* footer 세부 */}
+                {/* footer를 통해 연결되는 페이지 */}
                 <Route path="/premium" element={<PremiumInformation />} />
                 <Route path="/guideline" element={<GuideLine />} />
                 <Route path="/policy" element={<Policy />} />
-                <Route path="/notice-Board" element={<NoticeBoard />} />
+                <Route path="/notice" element={<Notice />} />
 
                 {/* 404 에러 페이지 */}
                 <Route path="/404" element={<Error404 />} />

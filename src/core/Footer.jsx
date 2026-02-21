@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
 const Footer = () => {
     const location = useLocation();
 
-    if (location.pathname === '/search/*') return null;
+    if (location.pathname.startsWith('/search/')) return null;
 
     return (
         <footer>
@@ -14,22 +13,22 @@ const Footer = () => {
                     <div className="footer-top-menu">
                         <p><i className="fa-regular fa-face-smile-wink"></i>FUNFUN</p>
                         <ul>
-                            <li><Link to="#">FUNFUN</Link></li>
-                            <li><Link to="/notice-board">공지사항</Link></li>
-                            <li><Link to="#">서비스 소개</Link></li>
-                            <li><Link to="#">광고센터</Link></li>
+                            <li><a href="#">FUNFUN</a></li>
+                            <li><a href="/notice">공지사항</a></li>
+                            <li><a href="#">서비스 소개</a></li>
+                            <li><a href="#">광고센터</a></li>
                         </ul>
                         <ul>
-                            <li><Link to="#">이용안내</Link></li>
-                            <li><Link to="#">가이드</Link></li>
-                            <li><Link to="#">창작자 가이드</Link></li>
-                            <li><Link to="/premium">요금제 안내</Link></li>
+                            <li><a href="#">이용안내</a></li>
+                            <li><a href="#">가이드</a></li>
+                            <li><a href="#">창작자 가이드</a></li>
+                            <li><a href="/premium">요금제 안내</a></li>
                         </ul>
                         <ul>
-                            <li><Link to="#">정책</Link></li>
-                            <li><Link to="#">개인정보처리방침</Link></li>
-                            <li><Link to="/guideline">심사 기준</Link></li>
-                            <li><Link to="/policy">이용 정책</Link></li>
+                            <li><a href="#">정책</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="/guideline">심사 기준</a></li>
+                            <li><a href="/policy">이용 정책</a></li>
                         </ul>
                     </div>
                     <div className="help-center ">
@@ -38,9 +37,9 @@ const Footer = () => {
                             <p>상담시간: 평일 00:00 ~ 00:00<br />
                                 (주말, 공휴일 휴무)</p>
                             <div className="support-button-area">
-                                <Link to="#">
+                                <a href="#">
                                     <div className="btn-support">문의하기</div>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -49,9 +48,9 @@ const Footer = () => {
                     <span className="stripe-line"></span>
                     <div className="social-icons ">
                         <ul className="social-icon-list">
-                            <li><Link to="#"><i className="fa-brands fa-square-facebook"></i></Link></li>
-                            <li><Link to="#"><i className="fa-brands fa-instagram"></i></Link></li>
-                            <li><Link to="#"><i className="fa-brands fa-twitter"></i></Link></li>
+                            <li><a href="#"><i className="fa-brands fa-square-facebook"></i></a></li>
+                            <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
                         </ul>
                     </div>
                     <span className="stripe-line"></span>

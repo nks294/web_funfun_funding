@@ -13,3 +13,4 @@ export { default as Upload } from './Upload';
 export { default as PremiumInformation } from './PremiumInfo';
 export { default as GuideLine } from './GuideLine';
 export { default as Policy } from './Policy';
+export { default as Notice } from './Notice';
