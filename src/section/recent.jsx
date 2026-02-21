@@ -6,8 +6,8 @@ const NewProject = () => {
 
     const wrapRef = useRef(null);
 
-    const [ itemsToRender, error ] = useData(8, 'recent', 0, 10);
-    
+    const [itemsToRender, error] = useData(8, 'recent', 0, 10);
+
     useEffect(() => {
         if (wrapRef.current && itemsToRender.length > 0) {
             renderData(wrapRef.current, itemsToRender, 'recent');

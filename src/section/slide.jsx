@@ -8,7 +8,7 @@ const Slider = ({ images, title, slideHeight, uiNeed = true }) => {
     const slideInterval = 6000;
     const intervalRef = useRef(null);
     const isDragging = useRef(false);
-    
+
     // 슬라이드 이동
     const moveSlide = useCallback(() => {
         const slideContainer = slideRef.current;
@@ -21,7 +21,7 @@ const Slider = ({ images, title, slideHeight, uiNeed = true }) => {
     }, [currentSlide, images.length]);
 
     // 다음 슬라이드 핸들러
-    const handleNext = useCallback (() => {
+    const handleNext = useCallback(() => {
         setCurrentSlide(prevIndex => {
             const maxSlide = images.length;
             return (prevIndex + 1) % maxSlide;
@@ -29,7 +29,7 @@ const Slider = ({ images, title, slideHeight, uiNeed = true }) => {
     }, [images.length]);
 
     // 이전 슬라이드 핸들러
-    const handlePrev = useCallback (() => {
+    const handlePrev = useCallback(() => {
         setCurrentSlide(prevIndex => {
             const maxSlide = images.length;
             return (prevIndex - 1 + maxSlide) % maxSlide;;
@@ -70,9 +70,9 @@ const Slider = ({ images, title, slideHeight, uiNeed = true }) => {
                 handlePrev();
             } else if (pointStart > pointEnd) {
                 handleNext();
-             }
-             clearInterval(intervalRef.current);
-             intervalRef.current = setInterval(handleNext, slideInterval);
+            }
+            clearInterval(intervalRef.current);
+            intervalRef.current = setInterval(handleNext, slideInterval);
         };
 
         slideContainer.addEventListener("mousedown", onMouseDown);
@@ -124,9 +124,9 @@ const Slider = ({ images, title, slideHeight, uiNeed = true }) => {
         };
 
     }, [currentSlide, handleNext, handlePrev, moveSlide, images.length]);
-    
+
     return (
-        <div className="slider-area" style={{height: `${slideHeight}`}}>
+        <div className="slider-area" style={{ height: `${slideHeight}` }}>
             {title && <p className="slider-title">{title}</p>}
             <div className="slider-container" ref={slideRef}>
                 <div className="slides">
@@ -140,11 +140,11 @@ const Slider = ({ images, title, slideHeight, uiNeed = true }) => {
                 </div>
             </div>
             {uiNeed &&
-            <div className="slider-ui">
-                <div className="slide-btn prev"><i className="fa-solid fa-chevron-left" /></div>
-                <span className="slide-pagenation">{pagenation}</span>
-                <div className="slide-btn next"><i className="fa-solid fa-chevron-right" /></div>
-            </div> }
+                <div className="slider-ui">
+                    <div className="slide-btn prev"><i className="fa-solid fa-chevron-left" /></div>
+                    <span className="slide-pagenation">{pagenation}</span>
+                    <div className="slide-btn next"><i className="fa-solid fa-chevron-right" /></div>
+                </div>}
         </div>
     );
 }

@@ -21,7 +21,7 @@ const CateRecommand = () => {
     ], []);
 
     // 모든 리스트들을 무작위로 가져오는 메서드
-    const getRandomSubjectList = useCallback((subject) =>  {
+    const getRandomSubjectList = useCallback((subject) => {
         const items = [...data].filter(item => item.projectMainCate === subject);
         return items.length > 0 ? items[Math.floor(Math.random() * items.length)] : null;
     }, [data]);
@@ -74,17 +74,17 @@ const CateRecommand = () => {
 
     useEffect(() => {
         getProjectList()
-        .then(response => {
-          setData(response);
-        })
-        .catch(error => {
-          console.error('메인 주제별 프로젝트 데이터 불러오기 실패', error);
-        })
-      }, []);
-      
+            .then(response => {
+                setData(response);
+            })
+            .catch(error => {
+                console.error('메인 주제별 프로젝트 데이터 불러오기 실패', error);
+            })
+    }, []);
+
     useEffect(() => {
         if (wrapRef.current && data.length > 0) {
-            renderList(); 
+            renderList();
         }
     }, [data, renderList]);
 
@@ -104,10 +104,10 @@ const CateRecommand = () => {
                     <span>이벤트를 통한 특별한 혜택을 놓치지 마세요!</span>
                 </div>
                 <div className="events-container">
-                    <Slide images={images} uiNeed={false}/>
+                    <Slide images={images} uiNeed={false} />
                 </div>
             </div>
-            <Aside />    
+            <Aside />
         </section>
     )
 }

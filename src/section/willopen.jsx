@@ -5,7 +5,7 @@ import { useData, renderData } from "util/useData";
 const WillOpen = () => {
     const wrapRef = useRef(null);
 
-    const [ data, error ] = useData(8, 'ready');
+    const [data, error] = useData(8, 'ready');
 
     useEffect(() => {
         if (wrapRef.current && data.length > 0) {

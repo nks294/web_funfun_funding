@@ -27,7 +27,7 @@ import React from 'react';
 
 // 개별 게시글 항목 컴포넌트
 // const NoticeItem = ({ notice }) => {
-  
+
 //   return (
 //     <>
 //       <div className="notice-item">
@@ -48,16 +48,16 @@ const DetailInfoStory = (props) => {
     // const articleId = data.articleId;
 
     return (
-      <>
-        <div className="notice-list-header">
-          <div className="header-left">
-            <h1>스토리</h1>
-          </div>
-        </div>
-        <div className="notice-list">
-          <h2>구현 예정</h2>
-        </div>
-      </>
+        <>
+            <div className="notice-list-header">
+                <div className="header-left">
+                    <h1>스토리</h1>
+                </div>
+            </div>
+            <div className="notice-list">
+                <h2>구현 예정</h2>
+            </div>
+        </>
     );
 }
 

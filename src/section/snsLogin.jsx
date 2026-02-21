@@ -15,23 +15,23 @@ const SnsLogin = (props) => {
     // }
 
     const onSNSButtonClick = () => {
-      if (props.type === 'login') {
-        alert("SNS 간편 로그인 클릭됨");
-      } else {
-        alert("SNS 간편 회원가입 클릭됨");
-      }
+        if (props.type === 'login') {
+            alert("SNS 간편 로그인 클릭됨");
+        } else {
+            alert("SNS 간편 회원가입 클릭됨");
+        }
     }
 
     return (
         <div className="login-method">
             <div className="login-method-control">
                 <button type="button" className="login-method-action" onClick={onSNSButtonClick}>
-                    <img src={btn_naver} alt="네이버 로고" className="fa-naver"/>
+                    <img src={btn_naver} alt="네이버 로고" className="fa-naver" />
                 </button>
             </div>
             <div className="login-method-control">
                 <button type="button" className="login-method-action" onClick={onSNSButtonClick}>
-                    <img src={btn_kakao} alt="카카오 로고" className="fa-kakao"/>
+                    <img src={btn_kakao} alt="카카오 로고" className="fa-kakao" />
                 </button>
             </div>
             <div className="login-method-control">

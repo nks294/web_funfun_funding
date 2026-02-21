@@ -9,8 +9,8 @@ const TrendList = (props) => {
     const scrollRef = useRef(null);
     const wrapRef = useRef(null);
 
-    const [ item ] = useState(props.item);
-    const [ data, error ] = useData(10, props.dataType, 0, 10); 
+    const [item] = useState(props.item);
+    const [data, error] = useData(10, props.dataType, 0, 10);
 
 
     useEffect(() => {
@@ -25,20 +25,20 @@ const TrendList = (props) => {
             const element = container.querySelector('.trend-project-block');
             const rightBtn = container.querySelector('.right');
             const leftBtn = container.querySelector('.left');
-        
+
             const buttonVisibility = () => {
                 const { scrollWidth, clientWidth, scrollLeft } = element;
                 leftBtn.style.display = scrollLeft > 0 ? 'flex' : 'none';
                 rightBtn.style.display = scrollWidth > clientWidth + scrollLeft ? 'flex' : 'none';
             };
-            
+
             const handleScroll = (direction) => {
                 const itemWidth = element.querySelector('.list-project-wrap')?.offsetWidth || 0;
                 const scrollAmount = itemWidth * 2;
                 if (direction === 'left') {
-                    element.scrollBy({left: -scrollAmount, behavior: 'smooth'});
+                    element.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 } else {
-                    element.scrollBy({left: scrollAmount, behavior: 'smooth'});
+                    element.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }
                 buttonVisibility();
             };
@@ -49,14 +49,14 @@ const TrendList = (props) => {
             rightBtn.addEventListener('click', rightButtonHandler);
             leftBtn.addEventListener('click', leftButtonHandler);
             element.addEventListener('scroll', buttonVisibility);
-            
+
             buttonVisibility();
-            
+
             return () => {
                 rightBtn.removeEventListener('click', rightButtonHandler);
                 leftBtn.removeEventListener('click', leftButtonHandler);
                 element.removeEventListener('scroll', buttonVisibility);
-            };   
+            };
         }
     }, [data]);
 

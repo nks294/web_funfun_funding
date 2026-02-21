@@ -2,24 +2,44 @@ package com.first.funfun.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-	private final long MAX_AGE_SECS = 3600;
+    private final long MAX_AGE_SECS = 3600;
 
-	//CORS(Cross-Origin Resource Sharing)가 이루어지도록 설정하는 메소드
-	//처음 리소스를 제공한 도메인이 현재 요청한 도메인과 다르더라도 요청을 허락해주는 웹 보안 방침
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		//모든 경로에 대해
-    registry.addMapping("/**")
-            .allowedOriginPatterns("https://preview.294.ink")
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
-            .allowedHeaders("*")
-            .allowCredentials(true)
-            .maxAge(MAX_AGE_SECS);
-	}
+    // CORS(Cross-Origin Resource Sharing)가 이루어지도록 설정하는 메소드
+    // 처음 리소스를 제공한 도메인이 현재 요청한 도메인과 다르더라도 요청을 허락해주는 웹 보안 방침
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // 모든 경로에 대해
+        registry.addMapping("/**")
+                .allowedOriginPatterns("https://works.294.ink", "http://localhost:*", "http://127.0.0.1:*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(MAX_AGE_SECS);
+    }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginCheckInterceptor())
+                // 보안을 적용할 API 경로 지정
+                .addPathPatterns(
+                        "/Project/insert",
+                        "/Project/updateProject",
+                        "/Project/*/deleteProject",
+                        "/Article/articleLike",
+                        "/Article/articleCancleLike",
+                        "/User/updateUser",
+                        "/User/*/deleteUser")
+                // 보안 검사에서 제외할 경로
+                .excludePathPatterns(
+                        "/User/login",
+                        "/User/insertUser",
+                        "/Project/get*",
+                        "/Article/get*");
+    }
 }

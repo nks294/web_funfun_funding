@@ -7,22 +7,22 @@ import { getArticle } from './apiService';
 */
 
 export const useArticle = (id) => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+    const [data, setData] = useState([]);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response;
-        response = await getArticle(id);
-        setData(response);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    fetchData();
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let response;
+                response = await getArticle(id);
+                setData(response);
+            } catch (error) {
+                setError(error);
+            }
+        };
+        fetchData();
 
-  }, [id]);
+    }, [id]);
 
-  return [data, error];
+    return [data, error];
 };
