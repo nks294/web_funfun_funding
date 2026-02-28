@@ -14,7 +14,7 @@ const Footer = () => {
                         <p><i className="fa-regular fa-face-smile-wink"></i>FUNFUN</p>
                         <ul>
                             <li><a href="#">FUNFUN</a></li>
-                            <li><a href="/notice">공지사항</a></li>
+                            <li><a href="/funfun/notice">공지사항</a></li>
                             <li><a href="#">서비스 소개</a></li>
                             <li><a href="#">광고센터</a></li>
                         </ul>
@@ -22,13 +22,13 @@ const Footer = () => {
                             <li><a href="#">이용안내</a></li>
                             <li><a href="#">가이드</a></li>
                             <li><a href="#">창작자 가이드</a></li>
-                            <li><a href="/premium">요금제 안내</a></li>
+                            <li><a href="/funfun/premium">요금제 안내</a></li>
                         </ul>
                         <ul>
                             <li><a href="#">정책</a></li>
                             <li><a href="#">개인정보처리방침</a></li>
-                            <li><a href="/guideline">심사 기준</a></li>
-                            <li><a href="/policy">이용 정책</a></li>
+                            <li><a href="/funfun/guideline">심사 기준</a></li>
+                            <li><a href="/funfun/policy">이용 정책</a></li>
                         </ul>
                     </div>
                     <div className="help-center ">
